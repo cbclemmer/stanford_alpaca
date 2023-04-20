@@ -17,7 +17,7 @@ pip install accelerate
 
 torchrun --nproc_per_node=4 --master_port=3456 train.py \
     --model_name_or_path hf_llama \
-    --data_path llama_label_phrases.json \
+    --data_path fine_tune_data.json \
     --output_dir fine_tune_model \
     --fp16 True \
     --num_train_epochs 1 \
