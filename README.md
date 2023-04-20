@@ -1,7 +1,5 @@
 # FORK
-This is a fork of alpaca that includes a script to fine tune a llama model using their v100 gpus
-
-
+This is a fork of alpaca that includes a script to fine tune a llama model at pittsburgh supercomputing center using their v100 gpus
 
 <p align="center" width="100%">
 <a href="https://crfm.stanford.edu/alpaca/" target="_blank"><img src="assets/logo.png" alt="Stanford-Alpaca" style="width: 50%; min-width: 300px; display: block; margin: auto;"></a>
