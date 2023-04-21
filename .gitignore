@@ -135,4 +135,7 @@ dmypy.json
 hf_llama/
 wandb/
 fine_tune_data.json
+fine_tuned_model/
 slurm-*
+test_input.txt
+test_instruction.txt
