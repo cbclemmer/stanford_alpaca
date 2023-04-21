@@ -4,6 +4,16 @@
 #SBATCH -t 60:00
 #SBATCH --gres=gpu:v100-32:4
 
+if [ ! -e "hf_llama/7B" ]; then
+  echo "Error: Must have huggingface converted llama model in hf_llama/7B"
+  exit 1
+fi
+
+if [ ! -e "fine_tune_data.json" ]; then
+  echo "Error: Must have fine tune data in fine_tune_data.json"
+  exit 1
+fi
+
 export OMP_NUM_THREADS=1
 module load AI/pytorch_23.02-1.13.1-py3
 
