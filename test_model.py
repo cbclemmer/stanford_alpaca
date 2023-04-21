@@ -4,10 +4,6 @@ import os
 import torch
 from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer
 
-parser = argparse.ArgumentParser(description='Generate text from a prompt using a pre-trained language model')
-parser.add_argument('--model_path', type=str, help='path to the PyTorch model file')
-args = parser.parse_args()
-
 # Check if CUDA is available
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -16,6 +12,7 @@ else:
 
 input_file = 'test_input.txt'
 instruction_file = 'test_instruction.txt'
+model_folder = 'fine_tuned_model'
 
 if not os.path.exists(input_file):
     print(f"The file test_input.txt does not exist.")
@@ -25,14 +22,17 @@ if not os.path.exists(instruction_file):
     print(f"The file test_instruction.txt does not exist.")
     exit()
 
-print("Loading model from", args.model_path)
+if not os.path.exists(model_folder):
+    print(f"The model folder {model_folder} does not exist")
+    exit()
+
+print("Loading model from", model_folder)
 # Load the pre-trained model and move it to the specified device
 model_load_t = time.time()
 model = AutoModelForCausalLM.from_pretrained(args.model_path).to(device)
 print(f"Model took {time.time() - model_load_t:.2f}s to load")
 
-
-print("Loading tokenizer from", args.model_path)
+print("Loading tokenizer from", model_folder)
 tokenizer_load_t = time.time()
 # Load the tokenizer
 tokenizer = AutoTokenizer.from_pretrained(args.model_path)
