@@ -29,13 +29,13 @@ if not os.path.exists(model_folder):
 print("Loading model from", model_folder)
 # Load the pre-trained model and move it to the specified device
 model_load_t = time.time()
-model = AutoModelForCausalLM.from_pretrained(args.model_path).to(device)
+model = AutoModelForCausalLM.from_pretrained('fine_tuned_model').to(device)
 print(f"Model took {time.time() - model_load_t:.2f}s to load")
 
 print("Loading tokenizer from", model_folder)
 tokenizer_load_t = time.time()
 # Load the tokenizer
-tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+tokenizer = AutoTokenizer.from_pretrained('fine_tuned_model')
 print(f'Tokenizer took {time.time() - tokenizer_load_t:.2f}s to load')
 
 # Define the pipeline to generate text
@@ -61,7 +61,7 @@ Write a response that appropriately completes the request.
 with open(input_file, "r") as f:
     prompt_input = f.read()
 
-print("Loading test instruction from", args.instruction_path)
+print("Loading test instruction from", 'test_instruction.txt')
 # Load the test instruction from a file and replace [INPUT] and [INSTRUCTION] with the prompt and instruction text, respectively
 with open(instruction_file, "r") as f:
     instruction = f.read()

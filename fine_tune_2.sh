@@ -2,7 +2,7 @@
 
 #SBATCH -p GPU-shared
 #SBATCH -t 2:00:00
-#SBATCH --gres=gpu:v100-32:4
+#SBATCH --gres=gpu:v100-32:2
 
 if [ ! -e "hf_llama/7B" ]; then
   echo "Error: Must have huggingface converted llama model in hf_llama/7B"
@@ -25,7 +25,7 @@ pip install deepspeed
 pip install accelerate
 # pip freeze
 
-torchrun --nproc_per_node=4 --master_port=3456 train.py \
+torchrun --nproc_per_node=2 --master_port=3456 train.py \
     --model_name_or_path hf_llama/7B \
     --data_path fine_tune_data.json \
     --output_dir fine_tuned_model \

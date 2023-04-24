@@ -25,8 +25,8 @@ cd fine_tuned_model
 python3 zero_to_fp32.py . pytorch_model.bin
 
 #Set protoc to python
-export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+# export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
-rm -rf global_step*
+# rm -rf global_step*
 
 echo "DONE"
