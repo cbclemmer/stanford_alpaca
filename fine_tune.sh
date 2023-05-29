@@ -2,7 +2,7 @@
 
 #SBATCH -p GPU-shared
 #SBATCH -t 2:00:00
-#SBATCH --gres=gpu:v100-32:4
+#SBATCH --gres=gpu:v100-32:2
 
 if [ ! -e "hf_llama/7B" ]; then
   echo "Error: Must have huggingface converted llama model in hf_llama/7B"
@@ -15,14 +15,14 @@ if [ ! -e "fine_tune_data.json" ]; then
 fi
 
 export OMP_NUM_THREADS=1
-module load AI/pytorch_23.02-1.13.1-py3
+#module load AI/pytorch_23.02-1.13.1-py3
 
-export PATH="/opt/packages/cuda/v11.7.1/bin:$PATH"
-export LD_LIBRARY_PATH="/opt/packages/cuda/v11.7.1/lib64:$LD_LIBRARY_PATH"
+#export PATH="/opt/packages/cuda/v11.7.1/bin:$PATH"
+#export LD_LIBRARY_PATH="/opt/packages/cuda/v11.7.1/lib64:$LD_LIBRARY_PATH"
 
-pip install -r requirements.txt
-pip install deepspeed
-pip install accelerate
+#pip install -r requirements.txt
+#pip install deepspeed
+#pip install accelerate
 # pip freeze
 
 torchrun --nproc_per_node=4 --master_port=3456 train.py \

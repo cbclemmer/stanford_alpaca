@@ -1,6 +1,6 @@
 {
   "bf16": {
-    "enabled": "auto"
+    "enabled": false
   },
   "optimizer": {
     "type": "AdamW",
@@ -19,6 +19,10 @@
       "warmup_max_lr": "auto",
       "warmup_num_steps": "auto"
     }
+  },
+  "fp16": {
+	"enabled": true,
+	"auto_cast": true
   },
   "zero_optimization": {
     "stage": 3,
@@ -40,10 +44,9 @@
     "stage3_max_reuse_distance": 1e9,
     "stage3_gather_16bit_weights_on_model_save": false
   },
-  "gradient_accumulation_steps": "auto",
+  "gradient_accumulation_steps": 1,
   "gradient_clipping": "auto",
   "steps_per_print": 5,
-  "train_batch_size": "auto",
-  "train_micro_batch_size_per_gpu": "auto",
+  "train_micro_batch_size_per_gpu": 1,
   "wall_clock_breakdown": false
 }

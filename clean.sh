@@ -9,9 +9,9 @@ if [ ! -e "fine_tuned_model" ]; then
   exit 1
 fi
 
-#Set protoc to python
-export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
-python3 test_model.py
+cd fine_tuned_model
+
+rm -rf global_step*
 
 echo "DONE"

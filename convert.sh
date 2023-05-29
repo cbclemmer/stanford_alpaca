@@ -9,14 +9,14 @@ if [ ! -e "fine_tuned_model" ]; then
   exit 1
 fi
 
-module load AI/pytorch_23.02-1.13.1-py3
+#module load AI/pytorch_23.02-1.13.1-py3
 
-export PATH="/opt/packages/cuda/v11.7.1/bin:$PATH"
-export LD_LIBRARY_PATH="/opt/packages/cuda/v11.7.1/lib64:$LD_LIBRARY_PATH"
+#export PATH="/opt/packages/cuda/v11.7.1/bin:$PATH"
+#export LD_LIBRARY_PATH="/opt/packages/cuda/v11.7.1/lib64:$LD_LIBRARY_PATH"
 
-pip install -r requirements.txt
-pip install deepspeed
-pip install accelerate
+#pip install -r requirements.txt
+#pip install deepspeed
+#pip install accelerate
 # pip freeze
 
 cd fine_tuned_model
