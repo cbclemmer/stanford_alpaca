@@ -25,7 +25,7 @@ export OMP_NUM_THREADS=1
 #pip install accelerate
 # pip freeze
 
-torchrun --nproc_per_node=4 --master_port=3456 train.py \
+torchrun --nproc_per_node=1 --master_port=3456 train.py \
     --model_name_or_path hf_llama/7B \
     --data_path fine_tune_data.json \
     --output_dir fine_tuned_model \
@@ -39,7 +39,7 @@ torchrun --nproc_per_node=4 --master_port=3456 train.py \
     --save_steps 1000 \
     --save_total_limit 1 \
     --learning_rate 2e-5 \
-    --weight_decay 0. \
+    --weight_decay 0 \
     --warmup_ratio 0.03 \
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
